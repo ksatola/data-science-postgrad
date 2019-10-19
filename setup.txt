@@ -7,6 +7,9 @@ https://panel.agh.edu.pl (login i haslo jak do @ agh)
 https://www.kaggle.com/
 https://www.r-project.org
 https://www.rstudio.com
-https://www.tidyverse.org/x
+https://www.tidyverse.org
 
 SQL Server: https://docs.microsoft.com/en-us/sql/t-sql/functions/functions?view=sql-server-ver15 
+
+R for Data Science: https://r4ds.had.co.nz
+R for Data Science Exercises Solutions: https://jrnold.github.io/r4ds-exercise-solutions/
