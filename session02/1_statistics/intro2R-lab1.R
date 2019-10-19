@@ -35,13 +35,14 @@ cat('aa', 'bb')
 
 ?c
 
+xs <- c(1,2,3,4,5)
+ys <- c(10,20,30,40,50)
 cat(xs, ys)
 
-print("My name is Inigo Montoya.", "You killed my father.", "Prepare to
-die.") # !!!
+print("My name is Inigo Montoya.", "You killed my father.", "Prepare to die.") # !!!
 
-ca # naciskamy klawisz [TAB], wybieramy z listy "cat", otwieramy nawias i... kontynuujemy wg nastepnej linii :)
- cat(c('a','b'))
+#ca # naciskamy klawisz [TAB], wybieramy z listy "cat", otwieramy nawias i... kontynuujemy wg nastepnej linii :)
+cat(c('a','b'))
 cat('a', 'b')
 
 

@@ -33,7 +33,7 @@ v1
 v1 <- c(v1, c(1,2))
 v1
 
-q() # po nacisnieciu klawisza [ENTER] w oknie dialogowym wybieramy opcje "nie zapisuj"
+#q() # po nacisnieciu klawisza [ENTER] w oknie dialogowym wybieramy opcje "nie zapisuj"
 
 # -----------------------
 
