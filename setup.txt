@@ -1,0 +1,3 @@
+https://poczta.agh.edu.pl
+https://moodle.ki.agh.edu.pl
+https://github.com/ksatola/data_science_postgrad
