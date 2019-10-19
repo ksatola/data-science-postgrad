@@ -2,6 +2,8 @@ https://poczta.agh.edu.pl
 https://moodle.ki.agh.edu.pl
 https://github.com/ksatola/data_science_postgrad
 
+https://panel.agh.edu.pl (login i haslo jak do @ agh)
+
 https://www.kaggle.com/
 https://www.r-project.org
 https://www.rstudio.com
