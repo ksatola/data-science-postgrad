@@ -9,4 +9,4 @@ https://www.r-project.org
 https://www.rstudio.com
 https://www.tidyverse.org/x
 
-SQL Server: https://docs.microsoft.com/en-us/sql/t-sql/functions/functions?view=sql-server-ver15
+SQL Server: https://docs.microsoft.com/en-us/sql/t-sql/functions/functions?view=sql-server-ver15 
