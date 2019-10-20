@@ -12,17 +12,17 @@ WHERE OrderID = 10250
 -- Napisz polecenie które dla każdego dostawcy (supplier) pokaże
 -- pojedynczą kolumnę zawierającą nr telefonu i nr faksu w formacie
 -- (numer telefonu i faksu mają być oddzielone przecinkiem)
+
+-- !!!! zle
 SELECT Phone, Fax, Phone + ', ' + Fax AS ContactDetails
 FROM Suppliers
 
 -- !!!! Wynik bedzie NULL, dlatego trzeba uzywac isnull
 SELECT 1 + 2 + NULL
 
+-- !!!! dobrze, NULLe nie zaburzaja wynikow
 SELECT Phone, Fax, isnull(Phone, 'brak') + ', ' + isnull(Fax, 'brak') AS ContactDetails
 FROM Suppliers
-
-
-
 
 
 -- UWAGA, AS nie jest obowiazkowe

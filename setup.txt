@@ -11,5 +11,7 @@ https://www.tidyverse.org
 
 SQL Server: https://docs.microsoft.com/en-us/sql/t-sql/functions/functions?view=sql-server-ver15 
 
+Relacyjne bazy danych: http://zasoby.open.agh.edu.pl/~09seenglert/index1ce5.html?link=home
+
 R for Data Science: https://r4ds.had.co.nz
 R for Data Science Exercises Solutions: https://jrnold.github.io/r4ds-exercise-solutions/
