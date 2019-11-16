@@ -22,7 +22,25 @@ try:
       # zostanie on utworzony z wartoscia 0
       t.setdefault(x, 0) 
       t[x] = t[x]+1
-    print(t)
+    #print(t)
+
+    # 5
+    # lista par
+    lp = t.items()
+    #print(lp)
+
+    # wyswietl parami
+    #for k,w in lp: # k - klucz, w - wartosc
+      #print(k,w)
+
+    # sortowanie
+    # lambda:
+    # jezeli calosc jest x,
+    # to chcemy sortowac po pierwszym elemencie x[0] calosci x
+    lp2 = sorted(lp, key=lambda x: x[0], reverse=True) 
+    for k,w in lp2: # k - klucz, w - wartosc
+      print(k,w)
+    
   # end
   f.close()
 except:
