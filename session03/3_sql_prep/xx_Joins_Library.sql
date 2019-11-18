@@ -85,3 +85,35 @@ SELECT (m.firstname + ' ' + m.lastname) AS name,
 FROM member m
 INNER JOIN adult a ON m.member_no = a.member_no
 
+-- Napisz polecenie, ktore zwraca: isbn, copy_no, on-loan, title, translation, cover
+-- dla ksiazek o isbn 1, 500 i 1000.
+-- Wynik posortuj wg ISBN
+SELECT i.isbn, c.copy_no, c.on_loan, t.title, i.translation, i.cover
+FROM item i
+INNER JOIN copy c ON i.isbn = c.isbn
+INNER JOIN title t on i.title_no = t.title_no
+WHERE i.isbn IN (1, 500, 1000)
+ORDER BY i.isbn
+
+-- Napisz polecenie, ktore zwraca informacje o uzytkownikach biblioteki
+-- o nr 250, 342 i 1675 (dla kazdego uzytkownika: nr, imie i nazwisko czlonka biblioteki),
+-- oraz informacje o zarezerwowanych ksiazkach (isbn, data)
+SELECT m.member_no, m.firstname, m.lastname, r.isbn, r.log_date
+FROM member m
+INNER JOIN reservation r ON m.member_no = r.member_no
+WHERE m.member_no IN (250, 342, 1675)
+
+-- sprawdzenie, zapytanie powyzej zwraca pusty wynik
+SELECT reservation.member_no
+FROM reservation
+WHERE member_no IN (250, 342, 1675)
+
+-- Podaj liste czlonkow biblioteki mieszkajacych w Arizonie (AZ),
+-- ktorzy maja wiecej niz dwoje dzieci zapisanych do biblioteki
+SELECT m.firstname, m.lastname, COUNT(j.member_no) as kids_no
+FROM member m
+INNER JOIN adult a ON m.member_no = a.member_no
+INNER JOIN juvenile j on a.member_no = j.adult_member_no
+WHERE state = 'AZ'
+GROUP BY m.firstname, m.lastname, a.member_no
+HAVING COUNT(j.member_no) > 2
