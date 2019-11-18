@@ -91,5 +91,12 @@ INNER JOIN Suppliers S
     ON P.SupplierID = S.SupplierID
 WHERE C.CategoryName = 'Confections'
 
--- WYbierz nazwy i numery telefonow klientow,
+-- Wybierz nazwy i numery telefonow klientow,
 -- ktorym w 1997 roku przesylki dostarczala firma 'United Package'
+SELECT C.CompanyName Customer, C.Phone, O.OrderDate, S.CompanyName Shipper
+FROM Customers C
+INNER JOIN Orders O
+    ON C.CustomerID = O.CustomerID
+INNER JOIN Shippers S
+    ON O.ShipVia = S.ShipperID
+WHERE S.CompanyName = 'United Package' AND YEAR(O.ShippedDate) = 1997
