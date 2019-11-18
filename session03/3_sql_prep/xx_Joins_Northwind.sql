@@ -111,3 +111,10 @@ INNER JOIN Products P ON OD.ProductID = P.ProductID
 INNER JOIN Categories C2 on P.CategoryID = C2.CategoryID
 WHERE C2.CategoryName = 'Confections'
 
+-- Napisz polecenie, ktore pokazuje pary pracownikow zajmujacych to samo stanowisko
+SELECT E.EmployeeID, E.FirstName, E.LastName,
+       E.Title,
+       E2.EmployeeID, E2.FirstName, E2.LastName
+From Employees E
+INNER JOIN Employees E2 ON E.Title = E2.Title
+WHERE E.EmployeeID < E2.EmployeeID
