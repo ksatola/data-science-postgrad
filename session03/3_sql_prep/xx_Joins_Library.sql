@@ -56,3 +56,24 @@ INNER JOIN member parent ON parent.member_no = a.member_no
 SELECT m.firstname, m.lastname
 FROM member m
 INNER JOIN adult a on m.member_no = a.member_no
+
+-- Napisz polecenie, ktore wyswietla adresy czlonkow biblioteki,
+-- ktorzy maja dzieci urodzone przez 1 stycznia 1996
+SELECT a.street, a.city, a.state, a.zip--, j.birth_date
+FROM member m
+INNER JOIN adult a ON a.member_no = m.member_no
+INNER JOIN juvenile j ON a.member_no = j.adult_member_no
+WHERE j.birth_date < '1996-01-01'
+
+-- ???
+-- Napisz polecenie, ktore wyswietla adresy czlonkow biblioteki,
+-- ktorzy maja dzieci urodzone przez 1 stycznia 1996.
+-- Interesuja nas tylko adresy takich czlonkow biblioteki,
+-- ktorzy aktuanie nie przetrzymuja ksiazek
+SELECT a.street, a.city, a.state, a.zip, l.isbn--, j.birth_date
+FROM member m
+INNER JOIN adult a ON a.member_no = m.member_no
+INNER JOIN juvenile j ON a.member_no = j.adult_member_no
+LEFT OUTER JOIN loan l ON m.member_no = l.member_no
+WHERE j.birth_date < '1996-01-01' AND l.isbn IS NULL
+

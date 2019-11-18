@@ -118,3 +118,29 @@ SELECT E.EmployeeID, E.FirstName, E.LastName,
 From Employees E
 INNER JOIN Employees E2 ON E.Title = E2.Title
 WHERE E.EmployeeID < E2.EmployeeID
+
+-- Napisz polecenie, ktore wyswietla pracownikow oraz ich podwladnych
+SELECT Pracownik.FirstName [Imie Pracownika], Pracownik.LastName [Nazwisko Pracownika],
+       Pracownik.ReportsTo [Pracownik Raportuje Do Id],
+       Szef.EmployeeID [Id Szefa], Szef.FirstName [Imie Szefa], Szef.LastName [Nazwisko Szefa]
+FROM Employees Pracownik
+INNER JOIN Employees Szef ON Pracownik.ReportsTo = Szef.EmployeeID
+
+-- Napisz polecenie, ktore wyswietla pracownikow, ktorzy nie maja podwladnych
+SELECT Pracownik.FirstName [Imie Pracownika], Pracownik.LastName [Nazwisko Pracownika],
+       Pracownik.ReportsTo [Pracownik Raportuje Do Id],
+       Szef.EmployeeID [Id Szefa], Szef.FirstName [Imie Szefa], Szef.LastName [Nazwisko Szefa]
+FROM Employees Pracownik
+LEFT OUTER JOIN Employees Szef ON Pracownik.ReportsTo = Szef.EmployeeID
+WHERE Pracownik.ReportsTo IS NULL
+
+-- Laczenie kilku zbiorow wynikowych - UNION
+-- Kazde zapytanie musi miec:
+-- - zgodne typy danych
+-- - taka sama liczbe kolumn
+-- - taki sam porzadek kolumn w select-list
+SELECT (Employees.FirstName + ' ' + Employees.LastName) AS name, city, postalcode
+FROM Employees
+UNION
+SELECT Customers.CompanyName, Customers.City, Customers.PostalCode
+FROM Customers
