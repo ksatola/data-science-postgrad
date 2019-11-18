@@ -73,3 +73,23 @@ WHERE OrderDate = '1996-07-08'
 -- Wybierz nazwy i ceny produktow o cenie jednostkowej pomiedzy 20.00 a 30.00,
 -- dla kazdego produktu podaj dane adresowe dostawcy, interesuja nas tylko produkty
 -- z kategorii 'Meat/Poultry'
+SELECT P.ProductName, P.UnitPrice, S.CompanyName, S.Address, C.CategoryName
+FROM Products P
+INNER JOIN Suppliers S
+    ON P.SupplierID = S.SupplierID
+INNER JOIN Categories C
+    ON P.CategoryID = C.CategoryID
+WHERE (UnitPrice BETWEEN 20.00 AND 30.00) AND C.CategoryName = 'Meat/Poultry'
+
+-- Wybierz nazwy i ceny produktow z kategorii 'Confections',
+-- dla kazdego produktu podaj nazwe dostawcy
+SELECT P.ProductName, P.UnitPrice, C.CategoryName, S.CompanyName
+FROM Products P
+INNER JOIN Categories C
+    ON P.CategoryID = C.CategoryID
+INNER JOIN Suppliers S
+    ON P.SupplierID = S.SupplierID
+WHERE C.CategoryName = 'Confections'
+
+-- WYbierz nazwy i numery telefonow klientow,
+-- ktorym w 1997 roku przesylki dostarczala firma 'United Package'
