@@ -93,10 +93,21 @@ WHERE C.CategoryName = 'Confections'
 
 -- Wybierz nazwy i numery telefonow klientow,
 -- ktorym w 1997 roku przesylki dostarczala firma 'United Package'
-SELECT C.CompanyName Customer, C.Phone, O.OrderDate, S.CompanyName Shipper
+SELECT C.CompanyName Customer, C.Phone--, O.OrderDate, S.CompanyName Shipper
 FROM Customers C
 INNER JOIN Orders O
     ON C.CustomerID = O.CustomerID
 INNER JOIN Shippers S
     ON O.ShipVia = S.ShipperID
 WHERE S.CompanyName = 'United Package' AND YEAR(O.ShippedDate) = 1997
+
+-- Wybierz nazwy i numery telefonow klientow,
+-- ktorzy kupowali produkty z kategorii 'Confections'
+SELECT C.CompanyName [Customer Name], C.Phone [Customer Phone]--, C2.CategoryName [Product Category Name]
+FROM Customers C
+INNER JOIN Orders O ON C.CustomerID = O.CustomerID
+INNER JOIN [Order Details] OD ON O.OrderID = OD.OrderID
+INNER JOIN Products P ON OD.ProductID = P.ProductID
+INNER JOIN Categories C2 on P.CategoryID = C2.CategoryID
+WHERE C2.CategoryName = 'Confections'
+

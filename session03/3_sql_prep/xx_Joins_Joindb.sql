@@ -88,3 +88,27 @@ FROM Buyers B
         ON B.buyer_id = S.buyer_id
     INNER JOIN Produce P
         ON S.prod_id = P.prod_id
+
+-- Laczenie tabeli samej ze soba - self join
+
+-- Napisz polecenie, ktore wyswietla liste wszystkich kupujacych te same produkty
+
+SELECT S.buyer_id buyer1, S.prod_id, S2.buyer_id buyer2
+FROM Sales S
+INNER JOIN Sales S2 ON S.prod_id = S2.prod_id
+
+-- Zmodyfikuj poprzedni przyklad, tak aby zlikwidowac duplikaty
+
+-- Usun rekordy odnoszace sie do tego samego buyer_id
+
+SELECT S.buyer_id buyer1, S.prod_id, S2.buyer_id buyer2
+FROM Sales S
+INNER JOIN Sales S2 ON S.prod_id = S2.prod_id
+WHERE S.buyer_id <> S2.buyer_id
+
+-- Usun symatryczne rekordy
+
+SELECT S.buyer_id buyer1, S.prod_id, S2.buyer_id buyer2
+FROM Sales S
+INNER JOIN Sales S2 ON S.prod_id = S2.prod_id
+WHERE S.buyer_id < S2.buyer_id
