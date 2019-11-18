@@ -70,4 +70,6 @@ FROM Products P
         ON OD.OrderID = O.OrderID
 WHERE OrderDate = '1996-07-08'
 
--- 30-join.pdf 23/32
+-- Wybierz nazwy i ceny produktow o cenie jednostkowej pomiedzy 20.00 a 30.00,
+-- dla kazdego produktu podaj dane adresowe dostawcy, interesuja nas tylko produkty
+-- z kategorii 'Meat/Poultry'
