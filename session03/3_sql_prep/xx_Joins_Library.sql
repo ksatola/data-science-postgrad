@@ -117,3 +117,22 @@ INNER JOIN juvenile j on a.member_no = j.adult_member_no
 WHERE state = 'AZ'
 GROUP BY m.firstname, m.lastname, a.member_no
 HAVING COUNT(j.member_no) > 2
+
+-- Podaj liste czlonkow biblioteki mieszkajacych w Arizonie (AZ),
+-- ktorzy maja wiecej niz dwoje dzieci zapisanych do biblioteki oraz takich,
+-- ktorzy mieszkaja w Kaliforni (CA) i maja wiecej niz troje dzieci
+SELECT a.state, m.firstname, m.lastname, COUNT(j.member_no) as kids_no
+FROM member m
+INNER JOIN adult a ON m.member_no = a.member_no
+INNER JOIN juvenile j on a.member_no = j.adult_member_no
+WHERE state = 'AZ'
+GROUP BY a.state, m.firstname, m.lastname, a.member_no
+HAVING COUNT(j.member_no) > 2
+UNION
+SELECT a.state, m.firstname, m.lastname, COUNT(j.member_no) as kids_no
+FROM member m
+INNER JOIN adult a ON m.member_no = a.member_no
+INNER JOIN juvenile j on a.member_no = j.adult_member_no
+WHERE state = 'CA'
+GROUP BY a.state, m.firstname, m.lastname, a.member_no
+HAVING COUNT(j.member_no) > 3
