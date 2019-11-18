@@ -77,3 +77,11 @@ INNER JOIN juvenile j ON a.member_no = j.adult_member_no
 LEFT OUTER JOIN loan l ON m.member_no = l.member_no
 WHERE j.birth_date < '1996-01-01' AND l.isbn IS NULL
 
+-- Napisz polecenie, ktore zwraca imie i nazwisko (jako pojedyncza kolumne - name),
+-- oraz informacje o adresie: ulica, miasto, stan, kod (jako pojedyncza kolumne - address)
+-- dla wszystkich doroslych czlonkow biblioteki
+SELECT (m.firstname + ' ' + m.lastname) AS name,
+       (a.street + ', ' + a.city + ', ' + a.state + ', ' + a.zip) AS address
+FROM member m
+INNER JOIN adult a ON m.member_no = a.member_no
+
