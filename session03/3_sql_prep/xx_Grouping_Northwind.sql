@@ -55,3 +55,29 @@ SELECT SUM(UnitPrice * Quantity - (UnitPrice * Quantity * Discount)) [Wartosc Za
 FROM [Order Details]
 WHERE OrderID = 10250
 
+-- Klauzula GROUP BY
+SELECT * FROM orderhist
+
+SELECT productid, SUM(quantity) AS total_quantity
+FROM orderhist
+GROUP BY productid
+
+SELECT productid, SUM(quantity) AS total_quantity
+FROM orderhist
+WHERE productid = 2
+GROUP BY productid
+
+-- Napisz polecenie, ktore zwraca informacje o zamowieniach z tablicy order details.
+-- Zapytanie ma grupowac i wyswietlac id kazdego produktu, a nastepnie obliczac ogolna zamowiona ilosc.
+-- Ogolna ilosc jest sumowana funkcja agregujaca SUM i wyswietlana jako jedna wartosc
+-- dla kazdego produktu.
+SELECT ProductID, SUM(Quantity) [Ogolna Zamowiona Ilosc]
+FROM [Order Details]
+GROUP BY ProductID
+
+-- Podaj maksymalna cene zamawianego produktu dla kazdego zamowienia
+SELECT ProductID, MAX(UnitPrice) [Max Unit Price]
+FROM [Order Details]
+GROUP BY ProductID
+--ORDER BY [Max Unit Price] DESC
+
