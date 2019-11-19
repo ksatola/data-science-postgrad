@@ -79,5 +79,25 @@ GROUP BY ProductID
 SELECT ProductID, MAX(UnitPrice) [Max Unit Price]
 FROM [Order Details]
 GROUP BY ProductID
---ORDER BY [Max Unit Price] DESC
 
+-- Posortuj zamowienia wg maksymalnej ceny produktu
+SELECT ProductID, MAX(UnitPrice) [Max Unit Price]
+FROM [Order Details]
+GROUP BY ProductID
+ORDER BY [Max Unit Price] DESC
+
+-- Podaj maksymalna i minimalna cene zamawianego produktu dla kazdego zamowienia
+SELECT ProductID, MAX(UnitPrice) [Max Unit Price], MIN(UnitPrice) [Min Unit Price]
+FROM [Order Details]
+GROUP BY ProductID
+
+-- Podaj liczbe zamowien dostarczanych przez poszczegolnych spedytorow (przewoznikow)
+SELECT ShipVia [Shipper Id], COUNT(OrderID) [Liczba Zamowien]
+FROM Orders
+GROUP BY ShipVia
+
+SELECT ShipVia [Shipper Id], S.CompanyName [Shipper Name], COUNT(OrderID) [Orders Count]
+FROM Orders O
+INNER JOIN Shippers S ON S.ShipperID = O.ShipVia
+GROUP BY ShipVia, S.CompanyName
+ORDER BY  ShipVia
