@@ -153,3 +153,11 @@ FROM orderhist
 GROUP BY productid, orderid
 WITH ROLLUP
 ORDER BY productid, orderid
+
+-- GROUP BY z operatorem CUBE
+
+SELECT productid, orderid, SUM(quantity) AS total_quantity
+FROM orderhist
+GROUP BY productid, orderid
+WITH CUBE
+ORDER BY productid, orderid
