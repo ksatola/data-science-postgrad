@@ -96,8 +96,60 @@ SELECT ShipVia [Shipper Id], COUNT(OrderID) [Liczba Zamowien]
 FROM Orders
 GROUP BY ShipVia
 
+-- Ulepszona wersja
 SELECT ShipVia [Shipper Id], S.CompanyName [Shipper Name], COUNT(OrderID) [Orders Count]
 FROM Orders O
 INNER JOIN Shippers S ON S.ShipperID = O.ShipVia
 GROUP BY ShipVia, S.CompanyName
 ORDER BY  ShipVia
+
+-- Ktory ze spedytorow byl najaktywniejszy w 1997 roku?
+SELECT ShipVia [Shipper Id], S.CompanyName [Shipper Name], COUNT(OrderID) [Orders Count]
+FROM Orders O
+INNER JOIN Shippers S ON S.ShipperID = O.ShipVia
+WHERE YEAR(OrderDate) = '1997'
+GROUP BY ShipVia, S.CompanyName
+ORDER BY  [Orders Count] DESC
+
+-- Odp: Shipper id 2, United Package, 153 zamowienia w 1997
+
+-- GROUP BY z klauzula HAVING
+
+SELECT productid, SUM(quantity) AS total_quantity
+FROM orderhist
+GROUP BY productid
+HAVING SUM(quantity) >= 30
+
+-- Wyswietl liste identyfikatorow produktow i ilosc dla tych produktow,
+-- ktorych zamowiono ponad 1200 jednostek
+SELECT ProductID, SUM(Quantity) AS total_quantity
+FROM [Order Details]
+GROUP BY  ProductID
+HAVING SUM(Quantity) > 1200
+
+-- Wyswietl zamowienia, dla ktorych liczba pozycji zamowienia jest wieksza niz 5
+SELECT OrderID, COUNT(ProductID) [Liczba Pozycji]
+FROM [Order Details]
+GROUP BY OrderID
+HAVING COUNT(ProductID) > 5
+
+-- Wyswietl klientow, dla ktorych w 1998 roku zrealizowano wiecej niz 1 zamowienie
+-- (wyniki posortuj malejaco wg id klienta).
+SELECT CustomerID, COUNT(OrderID) [Liczba Zamowien], ShippedDate
+FROM Orders
+WHERE YEAR(ShippedDate) = '1998'
+GROUP BY CustomerID, ShippedDate
+HAVING COUNT(OrderID) > 1
+ORDER BY CustomerID DESC
+
+-- pomocnicza
+SELECT TOP 10 * FROM Orders
+
+
+-- GROUP BY z operatorem ROLLUP
+
+SELECT productid, orderid, SUM(quantity) AS total_quantity
+FROM orderhist
+GROUP BY productid, orderid
+WITH ROLLUP
+ORDER BY productid, orderid
