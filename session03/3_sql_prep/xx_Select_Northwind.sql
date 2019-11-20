@@ -82,3 +82,60 @@ SELECT CompanyName
 FROM Customers
 WHERE CompanyName LIKE '%Store'
 
+-- Szukamy informacji o producktach o cenach mniejszych niz 10 lub wiekszych niz 20
+SELECT ProductName, UnitPrice
+FROM Products
+--WHERE UnitPrice < 10 OR UnitPrice > 20
+WHERE UnitPrice NOT BETWEEN 10 AND 20
+
+-- Wybierz nazwy i ceny produktow o cenie jednostkowej pomiedzy 20.00 a 30.00
+SELECT ProductName, UnitPrice
+FROM Products
+--WHERE UnitPrice >= 20 AND UnitPrice <= 30
+WHERE UnitPrice BETWEEN 20 AND 30
+
+-- Napisz instrukcje select tak, aby wybrac numer zlecenia,
+-- date zamowienia, numer klienta dla wszystkich niezrealizowanych jeszcze zlecen,
+-- dla ktorych krajem odbiorcy jest Argentyna
+SELECT OrderID, OrderDate, CustomerID--, ShipCountry, ShippedDate
+FROM Orders
+WHERE ShipCountry LIKE '%Argentina%' AND ShippedDate IS NULL
+
+-- Sortowanie danych - ORDER BY
+SELECT ProductID, ProductName, CategoryID, UnitPrice
+FROM Products
+ORDER BY CategoryID ASC, UnitPrice DESC
+
+-- lub z wykorzystaniem numerow zwracanych kolumn
+
+SELECT ProductID, ProductName, CategoryID, UnitPrice
+FROM Products
+ORDER BY 3 ASC, 4 DESC
+
+-- Wybierz nazwy i kraje wszystkich klientow, wyniki posortuj wg kraju,
+-- w ramach danego kraju nazwy firm posortuj alfabetycznie
+SELECT Country, CompanyName
+FROM Customers
+ORDER BY Country, CompanyName
+
+-- Wybierz informacje o produktach (grupa, nazwa, cena),
+-- produkty posortuj wg grup, a w grupach malejaco wg ceny
+SELECT CategoryID, UnitPrice, ProductName
+FROM Products
+ORDER BY CategoryID, UnitPrice DESC
+
+-- wersja z joinami
+SELECT C.CategoryName, UnitPrice, ProductName
+FROM Products P
+INNER JOIN Categories C on P.CategoryID = C.CategoryID
+ORDER BY CategoryName, UnitPrice DESC
+
+-- Zapytanie jak powyzej, ale tylko dla dostawcow z Japonii i Wloch
+SELECT C.CategoryName, UnitPrice, ProductName, S.CompanyName, S.Country
+FROM Products P
+INNER JOIN Categories C on P.CategoryID = C.CategoryID
+INNER JOIN Suppliers S on P.SupplierID = S.SupplierID
+WHERE S.Country IN ('Japan', 'Italy')
+--WHERE S.Country LIKE '%Japan%' OR S.Country LIKE '%Italy%'
+ORDER BY CategoryName, UnitPrice DESC
+
