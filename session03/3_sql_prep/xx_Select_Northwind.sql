@@ -107,7 +107,6 @@ FROM Products
 ORDER BY CategoryID ASC, UnitPrice DESC
 
 -- lub z wykorzystaniem numerow zwracanych kolumn
-
 SELECT ProductID, ProductName, CategoryID, UnitPrice
 FROM Products
 ORDER BY 3 ASC, 4 DESC
@@ -139,3 +138,42 @@ WHERE S.Country IN ('Japan', 'Italy')
 --WHERE S.Country LIKE '%Japan%' OR S.Country LIKE '%Italy%'
 ORDER BY CategoryName, UnitPrice DESC
 
+-- Eliminowanie duplikatow - DISTINCT
+SELECT DISTINCT Country
+FROM Suppliers
+ORDER BY Country
+
+-- Zmiana nazw kolumn
+SELECT FirstName AS First, LastName AS Last, EmployeeID AS 'Empl. ID'
+--SELECT FirstName AS First, LastName AS Last, EmployeeID AS [Empl. ID]
+FROM Employees
+
+-- bez AS
+SELECT FirstName First, LastName Last, EmployeeID 'Empl. ID'
+--SELECT FirstName AS First, LastName AS Last, EmployeeID AS [Empl. ID]
+FROM Employees
+
+-- Uzycie wartosci stalych
+SELECT FirstName, LastName, 'Id number:' + CAST(EmployeeID AS varchar(5))
+FROM Employees
+
+-- Kolumny wyliczane
+-- Podaj UnitPrice powiekszony o 5%
+SELECT OrderID, UnitPrice, UnitPrice * 1.05 as NewUnitPrice
+FROM [Order Details]
+
+-- Operacje na napisach
+SELECT FirstName + ' ' + LastName as [Imie i Nazwisko]
+FROM Employees
+
+-- Napisz polecenie, ktore oblicza wartosc kazdej pozycji zamowienia o numerze 10250
+SELECT OrderID, UnitPrice, Quantity, Discount,
+       (UnitPrice * Quantity - (UnitPrice * Quantity * Discount)) AS Final
+FROM [Order Details]
+WHERE OrderID = 10250
+
+-- Napisz polecenie, ktore dla kazdego dostawcy (Supplier) pokaze pojedyncza kolumne
+-- zawierajaca nr telefonu i nr faksu w formacie
+-- (numer telefonu i faksu maja byc oddzielone przecinkiem)
+SELECT CompanyName, Phone + ', ' + Fax AS 'Phone, Fax'
+FROM Suppliers
