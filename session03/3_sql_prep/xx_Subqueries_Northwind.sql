@@ -76,4 +76,4 @@ WHERE EmployeeID IN (
 -- pomocnicze
 SELECT EmployeeID
 FROM Orders AS O
-WHERE OrderDate = '9/5/97'
+WHERE OrderDate = '9/5/97' 
