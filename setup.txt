@@ -12,6 +12,7 @@ https://www.tidyverse.org
 SQL Server: https://docs.microsoft.com/en-us/sql/t-sql/functions/functions?view=sql-server-ver15 
 
 Relacyjne bazy danych: http://zasoby.open.agh.edu.pl/~09seenglert/index1ce5.html?link=home
+Przyklady: https://docplayer.pl/13497723-10-wybierz-nazwy-produktow-oraz-inf-o-stanie-magazynu-dla-produktow-dostarczanych-przez-firme-tokyo-traders.html
 Przyklady: https://artemis.wszib.edu.pl/~wojciak/bazy/
 
 R for Data Science: https://r4ds.had.co.nz

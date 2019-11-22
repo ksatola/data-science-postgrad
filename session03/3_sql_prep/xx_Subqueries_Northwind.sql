@@ -76,4 +76,53 @@ WHERE EmployeeID IN (
 -- pomocnicze
 SELECT EmployeeID
 FROM Orders AS O
-WHERE OrderDate = '9/5/97' 
+WHERE OrderDate = '9/5/97'
+
+-- Wybierz nazwy i numery telefonow klientow,
+-- ktorym w 1997 roku przesylki dostarczala firma United Package
+SELECT CompanyName, Phone
+FROM Customers
+WHERE CustomerID IN (
+    SELECT CustomerID
+    FROM Orders
+    WHERE YEAR(OrderDate) = '1997' AND ShipVia = 2
+    )
+
+SELECT * FROM Shippers WHERE CompanyName = 'United Package'
+
+SELECT DISTINCT CompanyName, Phone--, OrderDate
+FROM Customers C
+INNER JOIN Orders O ON C.CustomerID = O.CustomerID
+WHERE YEAR(OrderDate) = '1997' AND ShipVia = (
+    SELECT ShipperID FROM Shippers WHERE CompanyName = 'United Package'
+    )
+
+-- Wybierz nazwy i numery telefonow klientow,
+-- ktorzy kupowali produkty z kategorii Confections
+SELECT CompanyName, Phone
+FROM Customers C
+WHERE EXISTS (
+    SELECT * FROM Orders O WHERE C.CustomerID = O.CustomerID
+          )
+
+
+SE
+
+SELECT DISTINCT CompanyName, Phone, CategoryName
+FROM Customers C
+INNER JOIN Orders O ON C.CustomerID = O.CustomerID
+INNER JOIN [Order Details] OD ON O.OrderID = OD.OrderID
+INNER JOIN Products P on OD.ProductID = P.ProductID
+INNER JOIN Categories C2 on P.CategoryID = C2.CategoryID
+WHERE CategoryName = 'Confections'
+
+-- Wybierz nazwy i numery telefonow klientow, ktorzy NIE kupowali produkty z kategorii Confections
+SELECT DISTINCT CompanyName, Phone--, CategoryName
+FROM Customers C
+INNER JOIN Orders O ON C.CustomerID = O.CustomerID
+INNER JOIN [Order Details] OD ON O.OrderID = OD.OrderID
+INNER JOIN Products P on OD.ProductID = P.ProductID
+INNER JOIN Categories C2 on P.CategoryID = C2.CategoryID
+WHERE CategoryName NOT IN ('Confections')
+ORDER BY CompanyName
+
