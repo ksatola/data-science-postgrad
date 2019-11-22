@@ -93,7 +93,7 @@ SELECT * FROM Shippers WHERE CompanyName = 'United Package'
 SELECT DISTINCT CompanyName, Phone--, OrderDate
 FROM Customers C
 INNER JOIN Orders O ON C.CustomerID = O.CustomerID
-WHERE YEAR(OrderDate) = '1997' AND ShipVia = (
+WHERE YEAR(OrderDate) = '1997' AND ShipVia IN (
     SELECT ShipperID FROM Shippers WHERE CompanyName = 'United Package'
     )
 
@@ -101,12 +101,15 @@ WHERE YEAR(OrderDate) = '1997' AND ShipVia = (
 -- ktorzy kupowali produkty z kategorii Confections
 SELECT CompanyName, Phone
 FROM Customers C
-WHERE EXISTS (
-    SELECT * FROM Orders O WHERE C.CustomerID = O.CustomerID
-          )
-
-
-SE
+WHERE CustomerID IN (
+    SELECT C.CustomerID
+    FROM Customers C1
+        INNER JOIN Orders O ON C1.CustomerID = O.CustomerID
+        INNER JOIN [Order Details] OD ON O.OrderID = OD.OrderID
+        INNER JOIN Products P on OD.ProductID = P.ProductID
+        INNER JOIN Categories C2 on P.CategoryID = C2.CategoryID
+    WHERE CategoryName LIKE 'Confections'
+    )
 
 SELECT DISTINCT CompanyName, Phone, CategoryName
 FROM Customers C
@@ -114,15 +117,18 @@ INNER JOIN Orders O ON C.CustomerID = O.CustomerID
 INNER JOIN [Order Details] OD ON O.OrderID = OD.OrderID
 INNER JOIN Products P on OD.ProductID = P.ProductID
 INNER JOIN Categories C2 on P.CategoryID = C2.CategoryID
-WHERE CategoryName = 'Confections'
+WHERE CategoryName LIKE 'Confections'
 
 -- Wybierz nazwy i numery telefonow klientow, ktorzy NIE kupowali produkty z kategorii Confections
-SELECT DISTINCT CompanyName, Phone--, CategoryName
+SELECT CompanyName, Phone
 FROM Customers C
-INNER JOIN Orders O ON C.CustomerID = O.CustomerID
-INNER JOIN [Order Details] OD ON O.OrderID = OD.OrderID
-INNER JOIN Products P on OD.ProductID = P.ProductID
-INNER JOIN Categories C2 on P.CategoryID = C2.CategoryID
-WHERE CategoryName NOT IN ('Confections')
-ORDER BY CompanyName
+WHERE CustomerID NOT IN (
+    SELECT C1.CustomerID
+    FROM Customers C1
+        INNER JOIN Orders O ON C1.CustomerID = O.CustomerID
+        INNER JOIN [Order Details] OD ON O.OrderID = OD.OrderID
+        INNER JOIN Products P on OD.ProductID = P.ProductID
+        INNER JOIN Categories C2 on P.CategoryID = C2.CategoryID
+    WHERE CategoryName LIKE 'Confections'
+    )
 

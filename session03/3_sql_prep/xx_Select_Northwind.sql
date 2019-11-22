@@ -11,7 +11,7 @@ FROM Employees
 -- WHERE
 SELECT LastName, City
 FROM Employees
-WHERE Country = 'USA'
+WHERE Country LIKE 'USA'
 
 -- Znajdz numer zamowienia oraz identyfikator klienta dla zamowien z data
 -- wczesniejsza niz 8/1/96 z tabeli zamowien
