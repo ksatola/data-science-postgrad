@@ -88,10 +88,10 @@ ORDER BY NumOfCustomers
 
 ------------------------------
 Ocena: 4
--- 1. Podaj liczbę̨ zamówień́ obsłużonych przez każdego pracownika w 1997 roku.
+-- 1. Podaj liczbę̨ zamówien obsłużonych przez każdego pracownika w 1997 roku.
 -- Dodatkowo dla każdego pracownika podaj informację o tym, kiedy obsłużył ostatnie
 -- zamówienie (najpóźniejsza data zamówienia).
--- Zbiór wynikowy powinien zawierać́: imię̨ i nazwisko pracownika, liczbę̨ obsłużonych zamówień́. Interesują̨ nas tylko
+-- Zbiór wynikowy powinien zawierac: imię̨ i nazwisko pracownika, liczbę̨ obsłużonych zamówien. Interesują nas tylko
 -- pracownicy, którzy w roku 1997 obsłużyli co najmniej 3 zamówienia
 
 SELECT E.EmployeeID, E.LastName, E.FirstName, COUNT(OrderID) NumOfOrders, MAX(O.OrderDate) RecentDate
@@ -117,9 +117,9 @@ ORDER BY O.EmployeeID
 SELECT COUNT(OrderID) FROM Orders WHERE EmployeeID=1 AND YEAR(OrderDate) = '1997' HAVING COUNT(OrderID) > 2
 
 
--- 2. Podaj nazwy klientów oraz łączną wartość́ ich zamówień́ przewożonych przez firmę̨ ‘united packane’.
--- Dla każdego klienta podaj : nazwę̨ klienta, wartość́ zamówień́ (uwzględnij rabat).
--- Interesują̨ nas tylko klienci którym firma ‘united package’ przewiozła co najmniej dwie przesyłki
+-- 2. Podaj nazwy klientów oraz łączną wartość ich zamówień przewożonych przez firmę ‘united packane’.
+-- Dla każdego klienta podaj : nazwę klienta, wartość zamówień (uwzględnij rabat).
+-- Interesują nas tylko klienci którym firma ‘united package’ przewiozła co najmniej dwie przesyłki
 
 SELECT C.CompanyName, SUM(UnitPrice * Quantity * (1 - Discount)) AS TotalSpent
 FROM [Order Details] O2
@@ -132,7 +132,7 @@ HAVING Count(O.OrderID) >= 2
 
 --- albo
 
-SELECT DISTINCT C.CompanyName, SUM(UnitPrice*Quantity*(1-Discount)) AS Total
+SELECT DISTINCT C.CompanyName, SUM(UnitPrice * Quantity * (1 - Discount)) AS TotalSpent
 FROM Customers C
 INNER JOIN Orders O on C.CustomerID = O.CustomerID
 INNER JOIN [Order Details] OD ON O.OrderID = OD.OrderID
