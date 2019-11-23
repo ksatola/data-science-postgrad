@@ -87,7 +87,7 @@ ORDER BY NumOfCustomers
 
 
 ------------------------------
-Ocena: 4
+
 -- 1. Podaj liczbę̨ zamówien obsłużonych przez każdego pracownika w 1997 roku.
 -- Dodatkowo dla każdego pracownika podaj informację o tym, kiedy obsłużył ostatnie
 -- zamówienie (najpóźniejsza data zamówienia).
@@ -134,9 +134,9 @@ HAVING Count(O.OrderID) >= 2
 
 SELECT DISTINCT C.CompanyName, SUM(UnitPrice * Quantity * (1 - Discount)) AS TotalSpent
 FROM Customers C
-INNER JOIN Orders O on C.CustomerID = O.CustomerID
+INNER JOIN Orders O ON C.CustomerID = O.CustomerID
 INNER JOIN [Order Details] OD ON O.OrderID = OD.OrderID
-INNER JOIN Shippers S on O.ShipVia = S.ShipperID
+INNER JOIN Shippers S ON O.ShipVia = S.ShipperID
 WHERE O.ShipVia = (SELECT ShipperID FROM Shippers S2 WHERE S2.CompanyName LIKE 'United Package')
 GROUP BY C.CompanyName
 HAVING Count(O.OrderID) >= 2
