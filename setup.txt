@@ -15,5 +15,7 @@ Relacyjne bazy danych: http://zasoby.open.agh.edu.pl/~09seenglert/index1ce5.html
 Przyklady SQL: https://docplayer.pl/13497723-10-wybierz-nazwy-produktow-oraz-inf-o-stanie-magazynu-dla-produktow-dostarczanych-przez-firme-tokyo-traders.html
 Przyklady SQL: https://artemis.wszib.edu.pl/~wojciak/bazy/
 
+Statystyka: http://otworzksiazke.pl/images/ksiazki/biometria/biometria.pdf
+
 R for Data Science: https://r4ds.had.co.nz
 R for Data Science Exercises Solutions: https://jrnold.github.io/r4ds-exercise-solutions/
