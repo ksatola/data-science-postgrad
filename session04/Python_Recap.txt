@@ -162,7 +162,70 @@ flush(), close()
 fileno()
 
 
+---------------------------
+WYJATKI
 
+def f(x): return 1/x
+
+def f2(x): 
+	try:
+		return 1/x
+	except ZeroDivisionError:
+		print(”Nie wolno dzielić przez zero!!!”) return 0
+
+f2(0)
+
+###
+
+try: 
+	f=open("pap.txt","r")
+	for line in f: 
+		print(line)
+	f.close()
+
+except IOError: 
+	print("Coś jest nie tak!")
+
+
+---------------------------
+WYBRANE FUNKCJE
+
+# lista argumentów
+sys.argv
+
+# identyfikacja systemu operacyjnego
+sys.platform
+
+# zakończenie programu
+sys.exit()
+
+# bieżący katalog
+os.getcwd()
+
+# twórz katalog
+os.mkdir()
+
+# usuń katalog
+os.rmdir()
+
+# wykonaj polecenie
+os.system()
+
+
+---------------------------
+LAMBDA
+
+lambda arg1, arg2,... argN : expression using arguments
+
+def f(x, y): 
+	return x + y
+
+>>>f(2,3) 
+>>>5
+
+f = lambda x, y: x + y
+>>>f(2,3) 
+>>>5
 
  
 
