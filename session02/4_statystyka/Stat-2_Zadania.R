@@ -7,7 +7,7 @@ set.seed(123)
 
 # 1.2 Srednia z proby ----
 # Napisz kilka wariantów funkcji obliczającej średnią z próby (zadanej jako wektor v); 
-# kolejne warianty mogą wykorzystywać np. różne rodzaje pętli ( for, while, repeat ). 
+# kolejne warianty mogą wykorzystywać np. różne rodzaje pętli (for, while, repeat). 
 # Porównaj działanie z funkcją biblioteczną mean.
 
 v <- sample(x=1:10, size=10, replace=TRUE, prob=NULL)
@@ -119,7 +119,7 @@ my.median <- function(xs) {
   xs.sorted <- sort(xs)
   #print(xs.sorted)
   len <- length(xs)
-  pos <- (len+1) / 2
+  pos <- (len + 1) / 2
   if ((len %% 2) == 0) {
     median <- (xs.sorted[pos] + xs.sorted[pos+1]) / 2
   } else {
@@ -172,7 +172,7 @@ print(var(v))
 
 # 1.8 Odchylenie standardowe w probie ----
 # Napisz funkcję obliczającą odchylenie standardowe w próbie (zadanej jako wektor v).
-#Porównaj działanie z funkcją biblioteczną sd. 
+# Porównaj działanie z funkcją biblioteczną sd. 
 # Czy można wykorzystać tę funkcję do obliczenia odchylenia standardowego dla całej populacji?
 
 my.sd <- function(xs) {
@@ -214,7 +214,7 @@ v <- sample(x=1:10, size=7, replace=TRUE, prob=NULL)
 print(v)
 
 # Version 1
-my.lower.quartile <- function(xs) {
+my.quartile <- function(xs) {
   xs.sorted <- sort(xs)
   len <- length(xs.sorted)
   m <- (len + 1) / 2 # Pozycja elementu mediany
@@ -233,7 +233,7 @@ my.lower.quartile2 <- function(xs) {
   quantile(xs, 1/4, type=2)
 }
 
-q <- my.lower.quartile(v)
+q <- my.quartile(v)
 print(q[1])
 print(my.lower.quartile2(v))
 print(fivenum(v))
@@ -244,7 +244,7 @@ print(fivenum(v))
 # Porównaj działanie z funkcją biblioteczną fivenum.
 
 # Version 1
-q <- my.lower.quartile(v)
+q <- my.quartile(v)
 
 # Version 2
 my.upper.quartile2 <- function(xs) {
@@ -274,9 +274,9 @@ my.quantile <- function(xs, p) {
   len <- length(xs.sorted)
   if (p >= 0 && p <= 1) {
     m <- (len + 1) * p
+    print(xs.sorted)
+    xs.sorted[m+1]
   }
-  print(xs.sorted)
-  xs.sorted[m+1]
 }
 
 my.quantile(v, p)
@@ -289,7 +289,15 @@ quantile(v, p)
 
 # https://www.geeksforgeeks.org/interquartile-range-iqr/
 
+q <- my.quartile(v)
+print(q[3] - q[1])
+
 my.IQR <- function(xs) {
+  q <- my.quartile(xs)
+  q[3] - q[1]
+}
+
+my.IQR2 <- function(xs) {
   xs.sorted <- sort(xs)
   n <- length(xs)
   m <- (n + 1) / 2
@@ -303,18 +311,19 @@ my.IQR <- function(xs) {
   Q3 - Q1
 }
 
-my.IQR2 <- function(xs) {
+my.IQR3 <- function(xs) {
   quantile(xs, 3/4) - quantile(xs, 1/4)
 }
 
 print(my.IQR(v))
 print(my.IQR2(v))
+print(my.IQR3(v))
 print(IQR(v))
 
 
 # 1.14 Badanie wydajnosci ----
 
-install.packages('microbenchmark')  
+#install.packages('microbenchmark')  
 library(microbenchmark) 
 
 v <- sample(x=1:100, size=10000, replace=TRUE, prob=NULL)
@@ -348,7 +357,7 @@ autoplot(results)
 
 library(help = "datasets")
 
-install.packages("DataExplorer")
+#install.packages("DataExplorer")
 library(DataExplorer)
 
 ?AirPassengers
