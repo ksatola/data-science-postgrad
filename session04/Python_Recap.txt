@@ -1,0 +1,85 @@
+
+
+---------------------------
+ZBIORY
+
+- Nieuporządkowana kolekcja elementów
+- Elementy zbioru mogą być różnych typów
+
+# twórz zbiór pusty
+s = set()
+
+# twórz zbiór z listy
+s2 = set([2,3,5]) 
+
+# moc zbioru
+len(s)
+
+# wstaw element do zbioru
+s.add(el) 
+
+# usuń istniejący element ze zbioru
+s.remove(el) 
+
+# usuń element ze zbioru
+s.discard(el) 
+
+# opróżnij zbiór
+s.clear()
+
+# czy należy
+if el in s:
+
+# czy nie należy
+if el not in s: 
+
+# suma mnogościowa zbiorów s1 i s2
+s1.union(s2) 
+
+# część wspólna zbiorów s1 i s2
+s1.intersection(s2)
+
+---------------------------
+LISTY
+
+- Uporządkowane kolekcja elementów
+- Elementy listy mogą być różnych typów
+- Elementy listy mogą być zmieniane
+- Rozmiar listy może się zmieniać
+- Elementy dostępne poprzez indeksowanie
+- Operacje na listach analogiczne do operacji na napisach:
+	a+b, 
+	a*3, 
+	a[0], 
+	a[-1], 
+	a[1:], 
+	len(a)
+
+lista1 = [ ]
+lista2 = [2, 3, 5, 7]
+lista3 = [23, ”ala”, [1, 2, 3]]
+
+
+
+---------------------------
+ZBIORY
+
+
+
+---------------------------
+ZBIORY
+
+
+
+
+---------------------------
+ZBIORY
+
+
+
+
+ 
+
+
+
+ 
