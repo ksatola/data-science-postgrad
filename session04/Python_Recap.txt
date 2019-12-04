@@ -59,15 +59,52 @@ lista1 = [ ]
 lista2 = [2, 3, 5, 7]
 lista3 = [23, ”ala”, [1, 2, 3]]
 
+# dołącz element do listy
+lista.append(element)
+
+# pobierz element z listy
+lista.pop()
+
+# dołącz kilka elementów
+lista.extend(lista)
+
+# posortuj listę w miejscu
+lista.sort()
+
+# stwórz posortowaną listę
+lista2 = sorted(lista)
+
+# odwróć kolejność elementów
+lista.reverse()
+
+---------------------------
+KROTKI
+
+- Krotka (tuple) analogiczna do listy ale bez możliwości zmian zawartości
+Przykłady: 
+
+k1 = ( ,)
+k2 = ( ’ala’, ’ola’, ’ula’ )
+a, b, c = k2
+lista = list(k2) 
+k3 = tuple(lista)
+
+# funkcja zwraca krotkę
+x1, x2 = rk(a, b, c) 
+
 
 
 ---------------------------
-ZBIORY
+SLOWNIKI
 
+- Słownik, mapa, tabela, tablica asocjacyjna, tablica z haszowaniem
+- Nieuporządkowana kolekcja par klucz/wartość
+- Klucz najczęściej jest liczbą lub napisem
+- Klucz musi być unikalny
+- Wartość może być dowolnego typu
 
-
----------------------------
-ZBIORY
+t1 = { }
+t2 = { ’ala’:6, ’ola’:12, ’jan’:23 }
 
 
 
