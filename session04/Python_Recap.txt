@@ -39,6 +39,7 @@ s1.union(s2)
 # część wspólna zbiorów s1 i s2
 s1.intersection(s2)
 
+
 ---------------------------
 LISTY
 
@@ -77,11 +78,11 @@ lista2 = sorted(lista)
 # odwróć kolejność elementów
 lista.reverse()
 
+
 ---------------------------
 KROTKI
 
 - Krotka (tuple) analogiczna do listy ale bez możliwości zmian zawartości
-Przykłady: 
 
 k1 = ( ,)
 k2 = ( ’ala’, ’ola’, ’ula’ )
@@ -106,11 +107,41 @@ SLOWNIKI
 t1 = { }
 t2 = { ’ala’:6, ’ola’:12, ’jan’:23 }
 
+# wartość dla klucza
+h[klucz]
 
+# przypisanie wartości
+h[klucz]=wartosc
+
+# usuń wartość ze słownika
+del h[klucz]
+
+# usuwa słownik
+h.clear()
+
+# liczba pozycji w słowniku
+len(h)
+
+# wartość dla klucza lub default
+h.get(klucz, default) 
+
+# lista kluczy
+h.keys()
+
+# lista wartości
+h.values()
+
+# lista par
+h.items()
+
+# kopia słownika
+h.copy()
 
 
 ---------------------------
-ZBIORY
+PLIKI
+
+
 
 
 
