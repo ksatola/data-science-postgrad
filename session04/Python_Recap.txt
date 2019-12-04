@@ -141,7 +141,25 @@ h.copy()
 ---------------------------
 PLIKI
 
+f = open(filename [, tryb [, buffersize])
 
+- tryb: "r", "w", "a" ; default "r“
+- buffersize: 0=unbuffered; 1=line-buffered; buffered
+
+
+read([nbytes])
+
+# pojedyńcza linia
+readline()
+
+# wszystkie linie jako lista
+readlines()
+
+write(string)
+writelines(list)
+seek(pos [, how]), tell()
+flush(), close()
+fileno()
 
 
 
