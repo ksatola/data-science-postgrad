@@ -20,6 +20,8 @@ Statystyka: http://otworzksiazke.pl/images/ksiazki/biometria/biometria.pdf
 R for Data Science: https://r4ds.had.co.nz
 R for Data Science Exercises Solutions: https://jrnold.github.io/r4ds-exercise-solutions/
 
+Python and Excel: https://realpython.com/openpyxl-excel-spreadsheets-python/
+
 Han J., Kamber M., Pei J.: "Data mining: concepts and techniques", Morgan Kaufmann, 2011: https://hanj.cs.illinois.edu/bk3/bk3_slidesindex.htm
 Statsoft Podrecznik Statystyki: https://www.statsoft.pl/textbook/stathome.html
 Statsoft Textbook: http://www.statsoft.com/Textbook
