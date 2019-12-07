@@ -55,11 +55,15 @@ p2
 
 # Prawo wielkich liczb - w granicy, dostaniemy dokladne oszacowanie sredniej
 # rozmiar probki ma znaczenie i kazde oszacowanie parametru w populacji bedzie dokladniejsze
+# srednia proby staje sie estymatorem pubktowym parametru sredniej w populacji
 n3 <- rnorm(100, mean=0, sd=1)
 mean(n3)
 
 n4 <- rnorm(200, mean=0, sd=1)
 mean(n4)
+
+# centralne twierdzenie graniczne
+zob. zdjecie
 
 n5 <- rnorm(1000, mean=0, sd=1)
 mean(n5)
