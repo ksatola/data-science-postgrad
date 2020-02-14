@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+    <title>Mikroserwisy</title>
+    <meta charset="utf-8">
+</head>
+<body>
+<span style="color: inherit; font-family: inherit; font-size: 1.875rem;">Przykłady prostych zastosowań</span><br><p>Współczesne architektury oparte są o tzw. mikroserwisy. W uproszczeniu mikroserwisy to bezstanowe usługi udostępniające i przyjmujące dane w formacie JSON. Często różne platformy internetowe udostępniają tzw. API, a więc interfejsy programistyczne zrealizowane w formie właśnie mikroserwisów. </p><p>Weźmy dla przykładu serwis <a href="https://mojepanstwo.pl">https://mojepanstwo.pl</a>. Dostarcza on m.in. API do pozyskiwania danych o politykach. Przykładowo, aby pobrać listę wszystkich posłów VII i VIII kadencji, użyj adresu:<br><a href="https://api-v3.mojepanstwo.pl/dane/poslowie.json">https://api-v3.mojepanstwo.pl/dane/poslowie.json</a></p><p>Dokumentację API znajdziesz pod adresem <a href="https://mojepanstwo.pl/api/sejmometr">https://mojepanstwo.pl/api/sejmometr</a>.</p><p>Żeby otrzymać listę posłów obecnej kadencji musisz użyć dodatkowego filtru:</p><p><span style="color: inherit; font-family: SFMono-Regular, Menlo, Monaco, Consolas, &quot;Liberation Mono&quot;, &quot;Courier New&quot;, monospace; font-size: inherit;">https://api-v3.mojepanstwo.pl/dane/poslowie.json?conditions[poslowie.kadencja]=8</span></p><p><span style="font-size: 0.9375rem;">Natomiast dane danego posła pozyskasz w ten sposób:</span></p><p><span style="color: inherit; font-family: SFMono-Regular, Menlo, Monaco, Consolas, &quot;Liberation Mono&quot;, &quot;Courier New&quot;, monospace; font-size: inherit;">https://api-v3.mojepanstwo.pl/dane/poslowie/{$id}.json</span></p><h2 id="zadanie"><a name="zadanie" href="#zadanie"></a>Zadanie</h2><p>Korzystając z tego serwisu napisz funkcję</p><pre class="python hljs"><code class="Python" data-origin="<pre><code class=&quot;Python&quot;>def printLazyPolitics(absentVotingsLimit):
+    # ... implementation here
+
+printLazyPolitics(1000)
+</code></pre>"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">printLazyPolitics</span><span class="hljs-params">(absentVotingsLimit)</span>:</span>
+    <span class="hljs-comment"># ... implementation here</span>
+
+printLazyPolitics(<span class="hljs-number">1000</span>)
+</code></pre><p>która przyjmie parametr limitu opuszczonych głosowań i wypisze na ekran posłów wraz z liczbą opuszczonych głosowań np.:</p><pre><code data-origin="<pre><code>Jan Kowalski nieobecny/a na 1001 głosowaniach
+Piotr Nowak nieobecny/a na 1142 głosowaniach
+Zofia Jędrysek nieobecny/a na 1050 głosowaniach
+</code></pre>">Jan Kowalski nieobecny/a na 1001 głosowaniach
+Piotr Nowak nieobecny/a na 1142 głosowaniach
+Zofia Jędrysek nieobecny/a na 1050 głosowaniach
+</code></pre><h2 id="github-api"><a name="github-api" href="#github-api"></a>Github API</h2><p>Świetnym przykładem otwartego API jest serwis Github, który wpisuje się w ostatio modną nową dziedzinę nauki tzw. repository mining, a więc analizie danycj przechowywanych w różnych repozytoriach danych ze szczególnym uwzględnieniem repozytoriów programistycznych.</p><p>Pełna dokumentacja API znajduje się na stronie:<br><a href="https://developer.github.com/v3/">https://developer.github.com/v3/</a></p><p>Dokumentacja API dotyczącą przeszukiwania znajdziesz pod adresem:<br><a href="https://developer.github.com/v3/search/">https://developer.github.com/v3/search/</a></p><p>Poniżej zaprezentowano przykładowe zapytania:</p><ul>
+<li>Projekty, które zawierają słowo kluczowe <code>Tetris</code> (np. w nazwie, opisie, URLu) napisane w języku Assembler, posortowane w kolejności od najbardziej popularnego do najmniej popularnego (popularność mierzona ilością gwiazdek): <a href="https://api.github.com/search/repositories?q=tetris+language:assembly&amp;sort=stars&amp;order=desc">https://api.github.com/search/repositories?q=tetris+language:assembly&amp;sort=stars&amp;order=desc</a></li><li>Wszystkie projekty zaimplementowane przy użyciu języka Java <a href="https://api.github.com/search/repositories?q=language:java">https://api.github.com/search/repositories?q=language:java</a></li></ul><h2 id="zadanie"><a name="zadanie" href="#zadanie"></a>Zadanie</h2><p>Zbuduj ranking języków programowania wg ilosci projektów w serwisie Github.<br>Wykorzystaj następującą listę języków</p><pre class="python hljs"><code class="Python" data-origin="<pre><code class=&quot;Python&quot;>languages = {&quot;Java&quot;, &quot;C&quot;, &quot;C++&quot;, &quot;C#&quot;, &quot;Javascript&quot;, &quot;Python&quot;, &quot;PHP&quot;, &quot;Go&quot;}
+</code></pre>">languages = {<span class="hljs-string">"Java"</span>, <span class="hljs-string">"C"</span>, <span class="hljs-string">"C++"</span>, <span class="hljs-string">"C#"</span>, <span class="hljs-string">"Javascript"</span>, <span class="hljs-string">"Python"</span>, <span class="hljs-string">"PHP"</span>, <span class="hljs-string">"Go"</span>}
+</code></pre><p>Listę dostępnych w serwisie języków programowania można pobrać z API poleceniem:<br><a href="https://api.github.com/languages">https://api.github.com/languages</a></p>
+
+<footer style="position:fixed; font-size:.8em; text-align:right; bottom:0px; margin-left:-25px; height:20px; width:100%;">generated by <a href="http://pad.haroopress.com" target="_blank">haroopad</a></footer>
+</body>
+</html>

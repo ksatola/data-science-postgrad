@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+    <title>Webscraping</title>
+    <meta charset="utf-8">
+</head>
+<body>
+<span style="font-size: 0.9375rem;">Istniejące API serwisów posiadaja ograniczenia bądź dane serwisy w ogóle takich interfejsów nie posiadają. W takich przypadkach można pobierać dane bezpośrednio ze stron HTML wykorzystując ich strukturę. Strony HTML opierają się na tagach oraz klasach arkuszy stylów i te informacje będziemy wykorzystywali.</span><br><p>W tym celu potrzebować będziemy parser języka HTML. W Pythonie wykorzystamy bibliotekę <code>BeautifulSoup</code>. &nbsp;Przykładowe użycie biblioteki znajduje się poniżej</p><pre class="python hljs"><code class="Python" data-origin="<pre><code class=&quot;Python&quot;>from bs4 import BeautifulSoup
+
+response = requests.get(&quot;https://www.formula1.com&quot;)
+pageRootElement = BeautifulSoup(response.text, 'html.parser')
+</code></pre>"><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup
+
+response = requests.get(<span class="hljs-string">"https://www.formula1.com"</span>)
+pageRootElement = BeautifulSoup(response.text, <span class="hljs-string">'html.parser'</span>)
+</code></pre><p>Jeśli nie ma biblioteki w systemie zainstaluj ją komendą</p><p></p><pre>pip&nbsp;install&nbsp;beautifulsoup4</pre><p></p><p>W tym monencie możemy przeszukiwać pobraną stronę rozpoczynając od elementu głównego zapisanego pod zmienną <code>pageRootElement</code>, np.</p><ul>
+<li><code>element.select('.nazwaKlasyCSS')</code> - pobieranie tagów po nazwie klasy CSS</li><li><code>element.select('nazwaTaguHTML')</code> - pobieranie tagów po nazwie taga</li><li><code>element.select('#IDelementu')</code> - pobieranie elementów po ID</li><li><code>element.next_sibling</code> - pobieranie kolejnego elementu na tym samym poziomie</li><li><code>element['class']</code> - pobranie wartości atrybutu danego elementu</li><li><code>element.text</code> - pobranie zawartości (ciała) elementu</li></ul><p>Skopiuj poniższy kod i zobacz efekt działania:</p><pre class="python hljs"><code class="python" data-origin="<pre><code class=&quot;python&quot;>import requests
+from bs4 import BeautifulSoup
+
+response = requests.get(&quot;https://www.formula1.com&quot;)
+pageRootElement = BeautifulSoup(response.text, 'html.parser')
+
+for header in pageRootElement.select('.f1-cc--caption'):
+    children = header.children
+    for child in children:
+        try:
+            if &quot;no-margin&quot; in child['class']:
+                print(child.text)
+        except:
+            pass
+</code></pre>"><span class="hljs-keyword">import</span> requests
+<span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup
+
+response = requests.get(<span class="hljs-string">"https://www.formula1.com"</span>)
+pageRootElement = BeautifulSoup(response.text, <span class="hljs-string">'html.parser'</span>)
+
+<span class="hljs-keyword">for</span> header <span class="hljs-keyword">in</span> pageRootElement.select(<span class="hljs-string">'.f1-cc--caption'</span>):
+    children = header.children
+    <span class="hljs-keyword">for</span> child <span class="hljs-keyword">in</span> children:
+        <span class="hljs-keyword">try</span>:
+            <span class="hljs-keyword">if</span> <span class="hljs-string">"no-margin"</span> <span class="hljs-keyword">in</span> child[<span class="hljs-string">'class'</span>]:
+                print(child.text)
+        <span class="hljs-keyword">except</span>:
+            <span class="hljs-keyword">pass</span>
+</code></pre><p>Zamiast pobierać listę dzieci można ją przeszukiwać:</p><pre class="python hljs"><code class="python" data-origin="<pre><code class=&quot;python&quot;>children = header.find_all(&quot;p&quot;)
+if (len(children)&amp;gt;1):
+    print(children[1].text)
+</code></pre>">children = header.find_all(<span class="hljs-string">"p"</span>)
+<span class="hljs-keyword">if</span> (len(children)&gt;<span class="hljs-number">1</span>):
+    print(children[<span class="hljs-number">1</span>].text)
+</code></pre><p>Więcej informacji znajdziesz na stronie biblioteki:<br><a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">https://www.crummy.com/software/BeautifulSoup/bs4/doc/</a></p><h2 id="zadanie-1"><a name="zadanie-1" href="#zadanie-1"></a>Zadanie 1</h2><p>Napisz kod który pobiera i wypisuje na ekran wyniki wszystkich wyścigów Formuły 1 w roku 2018. Punktem wyjścia będzie strona <a href="https://www.formula1.com/en/results.html/2018/races.html">https://www.formula1.com/en/results.html/2018/races.html</a></p><p>Na końcu wyświetl posortowaną listę wszystkich zwycięzców wyścigów wraz z liczbą wygranych wyścigów. Ile kierowców zwyciężało w 2018 roku?</p><p>Fragment przykładowego wyniku:</p><pre><code data-origin="<pre><code>= RACE Australia
+  Location: Melbourne Grand Prix Circuit, Melbourne
+   Pos: 1 - Driver: Sebastian Vettel VET
+   Pos: 2 - Driver: Lewis Hamilton HAM
+   Pos: 3 - Driver: Kimi RÃ¤ikkÃ¶nen RAI
+   Pos: 4 - Driver: Daniel Ricciardo RIC
+   Pos: 5 - Driver: Fernando Alonso ALO
+   Pos: 6 - Driver: Max Verstappen VER
+   Pos: 7 - Driver: Nico Hulkenberg HUL
+   Pos: 8 - Driver: Valtteri Bottas BOT
+   ...
+</code></pre>">= RACE Australia
+  Location: Melbourne Grand Prix Circuit, Melbourne
+   Pos: 1 - Driver: Sebastian Vettel VET
+   Pos: 2 - Driver: Lewis Hamilton HAM
+   Pos: 3 - Driver: Kimi RÃ¤ikkÃ¶nen RAI
+   Pos: 4 - Driver: Daniel Ricciardo RIC
+   Pos: 5 - Driver: Fernando Alonso ALO
+   Pos: 6 - Driver: Max Verstappen VER
+   Pos: 7 - Driver: Nico Hulkenberg HUL
+   Pos: 8 - Driver: Valtteri Bottas BOT
+   ...
+</code></pre><h2 id="zadanie-2"><br></h2><h2 id="zadanie-2"><a name="zadanie-2" href="#zadanie-2"></a>Zadanie 2</h2><p>Wykorzystaj zdobytą wiedzę by stworzyć własną bazę danych posłów RP, w której znajdą się takie dane jak:</p><ul>
+<li>Imię i nazwisko</li><li>Data i miejsce urodzenia</li><li>Lista</li><li>Ilość głosów</li></ul><p>Listę posłów znajdziesz na stronie Sejmu:<br><a href="http://www.sejm.gov.pl/Sejm8.nsf/poslowie.xsp">http://www.sejm.gov.pl/Sejm8.nsf/poslowie.xsp</a></p><h2 id="zadanie-3"><a name="zadanie-3" href="#zadanie-3"></a>Zadanie 3</h2><p>Rozszerz swoją implementację o zapisywanie posłów do bazy danych.</p>
+
+<footer style="position:fixed; font-size:.8em; text-align:right; bottom:0px; margin-left:-25px; height:20px; width:100%;">generated by <a href="http://pad.haroopress.com" target="_blank">haroopad</a></footer>
+</body>
+</html>
