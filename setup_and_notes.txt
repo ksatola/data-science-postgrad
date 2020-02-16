@@ -27,3 +27,5 @@ Statsoft Podrecznik Statystyki: https://www.statsoft.pl/textbook/stathome.html
 Statsoft Textbook: http://www.statsoft.com/Textbook
 
 AWS S3 Buckets explorer: https://openaq-fetches.s3.amazonaws.com/index.html
+
+Spark: https://sparkbyexamples.com/
