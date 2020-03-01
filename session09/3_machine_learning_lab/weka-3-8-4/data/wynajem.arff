@@ -1,0 +1,28 @@
+% 1. Title: Wynajem
+% 
+
+@RELATION wynajem
+
+@ATTRIBUTE metry	REAL
+@ATTRIBUTE pokoje 	REAL
+@ATTRIBUTE lazienki REAL
+@ATTRIBUTE cena		REAL
+@ATTRIBUTE balkon	{tak,nie}
+@ATTRIBUTE class 	{tak,nie}
+
+@DATA
+34, 1, 1, 1200, nie, nie
+54, 2, 2, 2200, tak, tak
+24, 1, 1, 800, nie, tak
+34, 1, 1, 1300, tak, nie
+34, 1, 1, 1250, nie, nie
+44, 2, 2, 1800, tak, tak
+24, 1, 1, 900, tak, nie
+24, 1, 1, 800, nie, nie
+74, 3, 1, 3200, tak, nie
+64, 3, 2, 3000, tak, nie
+54, 3, 2, 2400, tak, tak
+
+%
+%
+%
