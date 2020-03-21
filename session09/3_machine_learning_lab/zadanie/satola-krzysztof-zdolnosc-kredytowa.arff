@@ -1,0 +1,54 @@
+% 1. Title: Zdolnosc kredytowa 
+% 
+
+@RELATION 'kredyt przyznany'
+
+@ATTRIBUTE 'wartosc nieruchomosci w tys'			numeric
+@ATTRIBUTE 'wartosc kredytu w tys' 					numeric
+@ATTRIBUTE 'dochod w tys' 							numeric
+@ATTRIBUTE 'okres splaty w latach' 					numeric
+@ATTRIBUTE 'liczba osob w gospodarstwie domowym'	numeric
+@ATTRIBUTE 'posiada majatek wlasny'					{tak,nie}
+@ATTRIBUTE 'wiek kredytobiorcy'						numeric
+@ATTRIBUTE 'miesieczne wydatki na utrzymanie (tys)'	numeric
+@ATTRIBUTE 'forma zatrudnienia'						{pracownik,wlasciciel_firmy}
+@ATTRIBUTE 'inne kredyty i zobowiazania'			{tak,nie}
+@ATTRIBUTE 'class'									{tak,nie}
+
+
+@DATA
+300, 300, 8, 20, 1, tak, 30, 6, pracownik, tak, nie
+200, 200, 12, 20, 1, nie, 40, 2, wlasciciel_firmy, tak, tak
+450, 200, 4, 30, 2, tak, 30, 3, pracownik, tak, nie
+600, 600, 10, 30, 4, tak, 35, 3, pracownik, nie, tak
+700, 350, 10, 10, 4, nie, 40, 6, wlasciciel_firmy, tak, nie
+350, 150, 8, 15, 2, tak, 30, 2, pracownik, nie, tak
+800, 600, 30, 20, 3, nie, 35, 3, wlasciciel_firmy, tak, tak
+100, 100, 6, 30, 1, tak, 35, 5, pracownik, nie, nie
+250, 200, 4, 35, 1, tak, 30, 3, pracownik, tak, nie
+850, 800, 9, 30, 4, tak, 40, 3, wlasciciel_firmy, tak, nie
+900, 700, 30, 35, 5, nie, 40, 2, wlasciciel_firmy, nie, tak
+950, 800, 40, 30, 4, nie, 35, 3, wlasciciel_firmy, tak, tak
+320, 180, 10, 20, 3, tak, 40, 4, pracownik, tak, tak
+220, 200, 5, 10, 2, tak, 30, 3, pracownik, nie, nie
+120, 100, 3, 10, 1, tak, 40, 2, pracownik, nie, nie
+300, 280, 9, 20, 1, tak, 30, 3, pracownik, tak, tak
+200, 220, 12, 20, 1, nie, 40, 2, wlasciciel_firmy, tak, tak
+450, 180, 5, 30, 2, tak, 30, 3, pracownik, tak, nie
+600, 400, 10, 30, 4, tak, 35, 3, pracownik, nie, tak
+700, 350, 10, 10, 4, nie, 40, 8, wlasciciel_firmy, nie, nie
+350, 150, 14, 15, 2, tak, 30, 2, pracownik, nie, tak
+800, 650, 30, 20, 3, nie, 35, 3, wlasciciel_firmy, tak, tak
+100, 150, 5, 30, 1, tak, 35, 5, pracownik, tak, nie
+250, 200, 4, 35, 1, tak, 30, 3, pracownik, tak, nie
+850, 700, 9, 30, 4, tak, 40, 3, wlasciciel_firmy, tak, nie
+900, 800, 35, 35, 5, nie, 40, 2, wlasciciel_firmy, nie, tak
+950, 600, 40, 30, 4, nie, 35, 3, wlasciciel_firmy, tak, tak
+320, 100, 12, 20, 3, tak, 40, 4, pracownik, nie, tak
+220, 180, 5, 10, 2, tak, 30, 3, pracownik, tak, nie
+120, 100, 3, 10, 1, tak, 40, 2, pracownik, nie, nie
+
+
+%
+%
+%
