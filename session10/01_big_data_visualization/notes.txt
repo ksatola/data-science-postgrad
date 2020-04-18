@@ -1,2 +1,3 @@
 Orange: https://orange.biolab.si/blog/2020/2020-02-08-lecture-notes/
 t-SNE: https://distill.pub/2016/misread-tsne/
+FAISS (Facebook): https://ai.facebook.com/tools/faiss/
