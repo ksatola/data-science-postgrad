@@ -1,3 +1,7 @@
 
 AlphaGo: https://www.youtube.com/watch?v=WXuK6gekU1Y&feature=youtu.be
 Talk to transformer: https://talktotransformer.com/
+Machine Learning Research Should Be Clear, Dynamic and Vivid: https://distill.pub/about/
+Deep Learning book: https://www.deeplearningbook.org
+
+Jupyter Notebook: https://sniug.lab.ki.agh.edu.pl/hub/login
