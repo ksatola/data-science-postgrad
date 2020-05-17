@@ -1,0 +1,99 @@
+{
+	"flow_name" : "Dataflow_07",
+	"steps" : [
+		{
+			"class" : "weka.knowledgeflow.steps.Loader",
+			"properties" : {
+				"loader" : {
+					"type" : "loader",
+					"class" : "weka.core.converters.ArffLoader",
+					"filePath" : "/Users/ksatola/Documents/git/data-science-postgrad/session09/3_machine_learning_lab/weka-3-8-4/data/soybean.arff",
+					"useRelativePath" : false
+				},
+				"name" : "ArffLoader"
+			},
+			"connections" : {
+				"instance" : [
+					"ClassAssigner"
+				]
+			},
+			"coordinates" : "35,47"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Filter",
+			"properties" : {
+				"filter" : {
+					"type" : "optionHandler",
+					"class" : "weka.filters.unsupervised.attribute.ClassAssigner",
+					"options" : "-C last"
+				},
+				"name" : "ClassAssigner"
+			},
+			"connections" : {
+				"instance" : [
+					"NaiveBayesUpdateable"
+				]
+			},
+			"coordinates" : "192,47"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Classifier",
+			"properties" : {
+				"classifier" : {
+					"type" : "optionHandler",
+					"class" : "weka.classifiers.bayes.NaiveBayesUpdateable",
+					"options" : ""
+				},
+				"loadClassifierFileName" : "",
+				"name" : "NaiveBayesUpdateable",
+				"resetIncrementalClassifier" : false,
+				"updateIncrementalClassifier" : true
+			},
+			"connections" : {
+				"incrementalClassifier" : [
+					"IncrementalClassifierEvaluator"
+				]
+			},
+			"coordinates" : "343,47"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.IncrementalClassifierEvaluator",
+			"properties" : {
+				"chartingEvalWindowSize" : 0,
+				"name" : "IncrementalClassifierEvaluator",
+				"outputPerClassInfoRetrievalStats" : false,
+				"statusFrequency" : 2000
+			},
+			"connections" : {
+				"text" : [
+					"TextViewer"
+				],
+				"chart" : [
+					"StripChart"
+				]
+			},
+			"coordinates" : "342,219"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.TextViewer",
+			"properties" : {
+				"name" : "TextViewer"
+			},
+			"connections" : {
+			},
+			"coordinates" : "170,218"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.StripChart",
+			"properties" : {
+				"XLabelFreq" : 500,
+				"name" : "StripChart",
+				"refreshFreq" : 5,
+				"refreshWidth" : 1
+			},
+			"connections" : {
+			},
+			"coordinates" : "549,220"
+		}
+	]
+}

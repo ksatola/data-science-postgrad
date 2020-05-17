@@ -1,0 +1,43 @@
+{
+	"flow_name" : "Dataflow_01",
+	"steps" : [
+		{
+			"class" : "weka.knowledgeflow.steps.Loader",
+			"properties" : {
+				"loader" : {
+					"type" : "loader",
+					"class" : "weka.core.converters.CSVLoader",
+					"filePath" : "/Users/ksatola/Documents/git/data-science-postgrad/session11/3_machine_learning/car.csv",
+					"useRelativePath" : false,
+					"options" : "-format \"yyyy-MM-dd\\'T\\'HH:mm:ss\" -M ? -B 100 -E \"\\\",\\'\" -F ,"
+				},
+				"name" : "CSVLoader"
+			},
+			"connections" : {
+				"dataSet" : [
+					"ArffSaver"
+				]
+			},
+			"coordinates" : "48,60"
+		},
+		{
+			"class" : "weka.knowledgeflow.steps.Saver",
+			"properties" : {
+				"name" : "ArffSaver",
+				"relationNameForFilename" : true,
+				"saver" : {
+					"type" : "saver",
+					"class" : "weka.core.converters.ArffSaver",
+					"filePath" : "",
+					"dir" : "/Users/ksatola/Documents/git/data-science-postgrad/session11/3_machine_learning",
+					"prefix" : "",
+					"useRelativePath" : false,
+					"options" : "-decimal 6"
+				}
+			},
+			"connections" : {
+			},
+			"coordinates" : "274,59"
+		}
+	]
+}
